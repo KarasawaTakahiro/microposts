@@ -1,0 +1,6 @@
+<%# binding.pry %>
+<%= form_for(current_user.following_relationships.build, remote: true) do |f| %>
+    <%# remote: true でAjax通信 %>
+    <div><%= hidden_field_tag :followed_id, @user.id %></div><%# type="hedden" %>
+    <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>
