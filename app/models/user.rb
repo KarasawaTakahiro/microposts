@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
     validates :place, length: {maximum: 30}
     validates :homepage, length: {maximum: 255}
     has_secure_password
+    has_many :microposts        # 各ユーザは複数の投稿を所持できる
 end

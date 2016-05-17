@@ -1,11 +1,28 @@
-<h1>
-    <%= gravatar_for @user %>
-    <%= @user.name %>
-</h1>
-
-    <ul class="list-group">
-        <li class="list-group-item text-center"><span class="glyphicon glyphicon-user"></span><br /><%= @user.profile %></li>
-        <li class="list-group-item text-center"><span class="glyphicon glyphicon-map-marker"></span><br /><%= @user.place %></li>
-        <li class="list-group-item text-center"><span class="glyphicon glyphicon-home"></span><br /><%= @user.homepage %></li>
-        <li class="list-group-item text-center"><span class="glyphicon glyphicon-heart"></span><br /><%= @user.birthday %></li>
-    </ul>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="user_info">
+            <h1>
+                <%= gravatar_for @user %>
+                <%= @user.name %>
+            </h1>
+        </section>
+        <section>
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item text-center"><span class="glyphicon glyphicon-user"></span><br /><%= @user.profile %></li>
+                    <li class="list-group-item text-center"><span class="glyphicon glyphicon-map-marker"></span><br /><%= @user.place %></li>
+                    <li class="list-group-item text-center"><span class="glyphicon glyphicon-home"></span><br /><%= @user.homepage %></li>
+                    <li class="list-group-item text-center"><span class="glyphicon glyphicon-heart"></span><br /><%= @user.birthday %></li>
+                </ul>
+            </div>
+        </section>
+    </aside>
+    <div class="col-md-8">
+        <% if @user.microposts.any? %>
+            <h3>Microposts (<%= @user.microposts.count %>)</h3>
+            <ol class="microposts">
+                <%= render @microposts %>
+            </ol>
+        <% end %>
+    </div>
+</div>
