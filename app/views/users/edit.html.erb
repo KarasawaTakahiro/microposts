@@ -1,0 +1,66 @@
+<h1>ユーザ情報編集</h1>
+
+<%= form_for(@user, html:{class: "form-horizontal"}) do |f| %>
+    <% if @user.errors.present? %>
+        <div class="alert alert-danger">
+            <%= alert %>
+            <ul>
+                <% @user.errors.full_messages.each do |full_messages| %>
+                    <li>
+                        <%= full_messages %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="user_name">
+            ユーザ名：
+        </label>
+        <div class="col-md-10">
+            <%= f.text_field :name,     class: "form-control" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="user_profile">
+            自己紹介：
+        </label>
+        <div class="col-md-10">
+            <%= f.text_area  :profile,  class: "form-control", row: 3 %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="user_place">
+            場所：
+        </label>
+        <div class="col-md-10">
+            <%= f.text_field :place,    class: "form-control" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="user_homepage">
+            ホームページ：
+        </label>
+        <div class="col-md-10">
+            <%= f.url_field :homepage, class: "form-control" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="user_birthday">
+            誕生日：
+        </label>
+        <div class="col-md-10 form-inline">
+                <%= f.date_select(:birthday,
+                                  {use_month_numbers: true, start_year: 1950,
+                                  end_year: (Time.now.year), default: Date.new(1993, 1, 1),
+                                  date_separator: '/'},
+                                  {class: "form-control"})%>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <%= f.submit class:"btn btn-primary" %>
+        </div>
+    </div>
+<% end %>

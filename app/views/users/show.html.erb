@@ -2,3 +2,10 @@
     <%= gravatar_for @user %>
     <%= @user.name %>
 </h1>
+
+    <ul class="list-group">
+        <li class="list-group-item text-center"><span class="glyphicon glyphicon-user"></span><br /><%= @user.profile %></li>
+        <li class="list-group-item text-center"><span class="glyphicon glyphicon-map-marker"></span><br /><%= @user.place %></li>
+        <li class="list-group-item text-center"><span class="glyphicon glyphicon-home"></span><br /><%= @user.homepage %></li>
+        <li class="list-group-item text-center"><span class="glyphicon glyphicon-heart"></span><br /><%= @user.birthday %></li>
+    </ul>

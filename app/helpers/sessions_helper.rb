@@ -11,7 +11,7 @@ module SessionsHelper
     def store_location
         # GETリクエストの時にリクエストURLを代入する
         # ログインが必要なページにアクセスした時に、
-        # ページのURL一旦保存して、ログイン後にリダイレクトする
+        # ページのURL一旦保存する
         session[:forwarding_url] = request.url if request.get?
     end
 end
