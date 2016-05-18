@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
         following_users.include?(other_user)
     end
 
+    # フォローしているユーザ＋自分のつぶやきを取得する
+    def feed_items
+        Micropost.where(user_id: following_user_ids + [self.id])
+    end
 end
