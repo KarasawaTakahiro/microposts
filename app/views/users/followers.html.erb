@@ -1,0 +1,7 @@
+<div class="row">
+    <% @user.follower_users.each do |user| %>
+        <div class="col-md-3 col-sm-4">
+            <%= render 'shared/other_user_info', user: user %>
+        </div>
+    <% end %>
+</div>

@@ -1,0 +1,21 @@
+<section>
+    <div class="row">
+        <div class="col-md-3">
+            <%= gravatar_for(user, {size: 50}) %>
+        </div>
+        <div class="col-md-9">
+            <p><strong><%= user.name %></strong>  <small>(<%= user.id %>)</small></p>
+            <%# ここにフォローフォーム %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-group">
+                <li class="list-group-item text-center"><span class="glyphicon glyphicon-user"></span><br /><%= user.profile %></li>
+                <li class="list-group-item text-center"><span class="glyphicon glyphicon-map-marker"></span><br /><%= user.place %></li>
+                <li class="list-group-item text-center"><span class="glyphicon glyphicon-home"></span><br /><%= user.homepage %></li>
+                <li class="list-group-item text-center"><span class="glyphicon glyphicon-heart"></span><br /><%= user.birthday %></li>
+            </ul>
+        </div>
+    </div>
+</section>

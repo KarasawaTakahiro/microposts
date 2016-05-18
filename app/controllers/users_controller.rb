@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include SessionsHelper
   include BCrypt
   before_action :logged_in_user, only: [:edit, :update]
-  before_action :set_user, only: [:edit, :update]  # :editと:updateの前だけ:set_messageを実行する
+  before_action :set_user, only: [:edit, :update, :followings, :followers]  # :editと:updateの前だけ:set_messageを実行する
 
 
   def new
@@ -56,6 +56,12 @@ class UsersController < ApplicationController
       @user = current_user
       render 'edit' and return
     end
+  end
+
+  def followings
+  end
+
+  def followers
   end
 
 
