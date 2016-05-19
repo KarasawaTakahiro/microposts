@@ -18,8 +18,8 @@
             </div>
         </section>
         <div>
-            <a class="col-md-6 col-sm-6 btn btn-primary" href="<%= followings_path %>"><small>フォロー</small><br /><%= @user.following_users.length %></a>
-            <a class="col-md-6 col-sm-6 btn btn-primary" href="<%= followers_path %>"><small>フォロワー</small><br /><%= @user.follower_users.length %></a>
+            <a class="col-md-6 col-sm-6 btn btn-primary" href="<%= followings_path(user_id: @user) %>"><small>フォロー</small><br /><%= @user.following_users.length %></a>
+            <a class="col-md-6 col-sm-6 btn btn-primary" href="<%= followers_path(user_id: @user) %>"><small>フォロワー</small><br /><%= @user.follower_users.length %></a>
         </div>
     </aside>
 

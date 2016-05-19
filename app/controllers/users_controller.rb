@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include SessionsHelper
   include BCrypt
   before_action :logged_in_user, only: [:edit, :update]
-  before_action :set_user, only: [:edit, :update, :followings, :followers]  # :editと:updateの前だけ:set_messageを実行する
+  before_action :set_user, only: [:edit, :update]  # :editと:updateの前だけ:set_messageを実行する
 
 
   def new
@@ -60,9 +60,21 @@ class UsersController < ApplicationController
   end
 
   def followings
+    if params[:user_id]
+      # 他人のfollowingsページを見てる
+      @user = User.find(params[:user_id])
+    else
+      set_user
+    end
   end
 
   def followers
+    if params[:user_id]
+      # 他人のfollowersページを見てる
+      @user = User.find(params[:user_id])
+    else
+      set_user
+    end
   end
 
 
