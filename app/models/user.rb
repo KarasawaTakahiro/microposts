@@ -24,6 +24,13 @@ class User < ActiveRecord::Base
                                       dependent:   :destroy
     has_many :follower_users, through: :follower_relationships, source: :follower
 
+    # fav
+    # Favorite クラス(モデル)の user_id と一致するものたち
+    has_many :favorite_relationships, class_name: "Favorite", foreign_key: "user_id", dependent: :destroy
+    # 上の :favorites に含まれる、 :micropost を返す
+    has_many :favorite_microposts, through: :favorite_relationships, source: :micropost
+
+
     # 他のユーザをフォローする
     def follow(other_user)
         # パラメータに一致するものがあれば返して、なければ作る
@@ -44,5 +51,22 @@ class User < ActiveRecord::Base
     # フォローしているユーザ＋自分のつぶやきを取得する
     def feed_items
         Micropost.where(user_id: following_user_ids + [self.id])
+    end
+
+    # fav をつける
+    def favorite(micropost)
+        # references を作る
+        favorite_relationships.find_or_create_by(micropost_id: micropost.id)
+    end
+
+    # fav をやめる
+    def unfavorite(micropost)
+        favorite_relationship = favorite_relationships.find_by(micropost_id: micropost.id)
+        favorite_relationship.destroy if favorite_relationship
+    end
+
+    # favしているか
+    def favorite?(micropost)
+        favorite_microposts.include?(micropost)
     end
 end
