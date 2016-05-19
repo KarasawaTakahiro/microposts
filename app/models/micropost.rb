@@ -4,7 +4,7 @@ class Micropost < ActiveRecord::Base
   validates :content, presence: true, length: {maximum: 140}
 
   has_many :favorited_relationships, class_name: "Favorite", foreign_key: "micropost_id", dependent: :destroy
-  has_many :favoriteds, through: :favorited_relationships, source: :user_id
+  has_many :favorited_microposts, through: :favorited_relationships, source: :user_id
 
   # favる
   def favorite(user)
